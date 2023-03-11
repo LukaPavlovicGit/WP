@@ -16,7 +16,7 @@ public class MessageReceiverThread implements Runnable{
             while (true) {
                 try {
                     String message = reader.readLine();
-                    if (message.equals("Status code: Exit") || Thread.currentThread().isInterrupted()) break;
+                    if (message.equals("code: shutdown") || Thread.currentThread().isInterrupted()) break;
                     else System.out.println(message);
                 } catch (IOException e) {e.printStackTrace();}
             }

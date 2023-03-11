@@ -13,8 +13,8 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message: " + '\'' + message + '\'' +
+        return "[Message: " + '\'' + message + '\'' +
                 ", sender: '" + sender + '\'' +
-                ", dateAndTime: '" + dateAndTime + '\'';
+                ", dateAndTime: '" + dateAndTime + '\'' + ']';
     }
 }

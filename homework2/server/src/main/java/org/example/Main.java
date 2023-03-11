@@ -14,10 +14,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(PORT);
-        System.out.println("Server is running");
+        System.out.println("Server is running...");
         while (true) {
             Socket socket = serverSocket.accept();
-            System.out.println("Server and Client are connecting");
+            System.out.println("Client is getting connection with a server");
             Thread serverThread = new Thread(new ServerThread(socket));
             serverThread.start();
         }

@@ -18,7 +18,7 @@ public class MessageSenderThread implements Runnable{
             if (Thread.currentThread().isInterrupted()) break;
             String message = scanner.nextLine();
             output.println(message);
-            if (message.equalsIgnoreCase("exit")) break;
+            if (message.equalsIgnoreCase("shutdown")) break;
         }
     }
 }
