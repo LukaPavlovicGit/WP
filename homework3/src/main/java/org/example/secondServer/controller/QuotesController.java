@@ -10,7 +10,6 @@ import org.example.model.Quote;
 import org.example.repository.QuoteRepository;
 
 public class QuotesController extends Controller {
-    private Gson gson = new Gson();
     public QuotesController(Request request) {
         super(request);
     }
