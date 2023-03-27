@@ -13,8 +13,8 @@ import static org.example.Main.database;
 
 public class ServerThread implements Runnable{
     private static final HashSet<String> forbiddenWords = new HashSet<>();
-    private final Socket socket;
     public static List<ServerThread> clients = new CopyOnWriteArrayList<>();
+    private final Socket socket;
     private PrintWriter output = null;
     private BufferedReader reader = null;
 
@@ -129,6 +129,5 @@ public class ServerThread implements Runnable{
         forbiddenWords.add("war");
         forbiddenWords.add("nigger");
         forbiddenWords.add("nigga");
-        forbiddenWords.add("sect");
     }
 }

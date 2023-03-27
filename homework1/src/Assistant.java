@@ -10,7 +10,7 @@ public class Assistant implements Runnable{
 
     public Assistant(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;
-        threadName = "Assistant thread";
+        threadName = "Assistant";
         semaphore = new Semaphore(1);
     }
 

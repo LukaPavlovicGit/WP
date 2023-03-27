@@ -22,6 +22,7 @@ public class Main {
         Professor professor = new Professor(examiners);
         Assistant assistant = new Assistant(examiners);
 
+        // Pool of threads used for async tasks
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         executorService.execute(professor);
         executorService.execute(assistant);
@@ -30,14 +31,18 @@ public class Main {
         System.out.println("Defend starts...");
 
         initTime = System.currentTimeMillis();
+
+        // Pool of threads used for scheduled(delayed) async tasks
         ScheduledExecutorService studentService = Executors.newScheduledThreadPool(N);
 
         for (int i = 0; i < N; i++) {
-            long defending = (new Random()).nextInt(500) + 500; // koliko dugo brani
-            long timeOfDefending = (new Random()).nextInt(1000); // kad pocinje sa odbranom
+            long delay = (new Random()).nextInt(1000); // kad pocinje sa odbranom
+            long totalDefenceTime = (new Random()).nextInt(500) + 500; // koliko dugo brani
             String studentName = "Student " + (i + 1);
-            Student student = new Student(studentName, assistant, professor, defending);
-            studentService.schedule(student, timeOfDefending, TimeUnit.MILLISECONDS);
+            Student student = new Student(studentName, assistant, professor, totalDefenceTime);
+
+            // studenti po redu ulaze na odbrane
+            studentService.schedule(student, delay, TimeUnit.MILLISECONDS);
         }
 
         // Odbrana traje 5s
