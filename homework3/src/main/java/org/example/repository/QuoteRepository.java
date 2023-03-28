@@ -26,11 +26,9 @@ public class QuoteRepository {
 
     public void addQuote(Quote quote){
         quotes.add(quote);
-        System.out.println(quotes.size());
     }
 
     public Quote getRandomQuote(){
-        System.out.println(quotes.size());
         return quotes.get(random.nextInt(quotes.size()));
     }
 

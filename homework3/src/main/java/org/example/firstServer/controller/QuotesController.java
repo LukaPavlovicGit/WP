@@ -14,8 +14,8 @@ import java.net.Socket;
 
 public class QuotesController extends Controller {
     private Request request;
-    private BufferedReader inputFromServer;
-    private PrintWriter outputToServer;
+    private BufferedReader in;
+    private PrintWriter out;
     private Gson gson = new Gson();
     private String requestLine;
 
@@ -27,7 +27,7 @@ public class QuotesController extends Controller {
     @Override
     public Response doGet() {
         StringBuilder bodyBuilder = new StringBuilder();
-        // post se izvrsava na \save-quote putanji
+        // post executes on the path \save-quote
         bodyBuilder.append("<form method=\"POST\" action = \"/save-quote\">");
         bodyBuilder.append("<label>Author: </label><input name=\"author\" type=\"text\"><br><br>");
         bodyBuilder.append("<label>Quote: </label><input name=\"quote\" type=\"text\"><br><br>");
@@ -45,18 +45,18 @@ public class QuotesController extends Controller {
 
         try {
             Socket socket = new Socket("localhost", 8081);
-            inputFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            outputToServer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
 
-            outputToServer.println("GET /qod HTTP/1.1\n" + "Accept: application/json\r\n\r\n");
-            requestLine = inputFromServer.readLine();
+            out.println("GET /qod HTTP/1.1\n" + "Accept: application/json\r\n\r\n");
+            requestLine = in.readLine();
             do {
                 System.out.println(requestLine);
-                requestLine = inputFromServer.readLine();
+                requestLine = in.readLine();
             } while (!requestLine.trim().equals(""));
 
-            String quoteOfTheDay = gson.fromJson(inputFromServer.readLine(), String.class);
-            bodyBuilder.append("<h1>Quote of the Day</h1>\n" +"<h2>" + quoteOfTheDay + "</h2>");
+            Quote quote = gson.fromJson(in.readLine(), Quote.class);
+            bodyBuilder.append("<h1>Quote of the Day</h1>\n" +"<h2>" + quote + "</h2>");
 
         } catch (IOException e) { e.printStackTrace();}
 

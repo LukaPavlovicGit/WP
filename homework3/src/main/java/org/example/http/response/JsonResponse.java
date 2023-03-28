@@ -15,10 +15,8 @@ public class JsonResponse extends Response {
 
     @Override
     public String sendResponseString() {
-        // jsonQuote = {"author":"author","content":"quote"}
-        // a hocemo "{\"author\":\"author2\",\"content\":\"quote2\"}"
         String response = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n";
-        response += gson.toJson(jsonQuote, String.class);
+        response += jsonQuote;
         return response;
     }
 }
