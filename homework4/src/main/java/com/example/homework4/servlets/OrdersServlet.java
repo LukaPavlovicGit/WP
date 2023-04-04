@@ -45,6 +45,19 @@ public class OrdersServlet extends HttpServlet {
         Map<String, List<AbstractMap.SimpleEntry<String, String>>> map;
         map = (Map<String, List<AbstractMap.SimpleEntry<String, String>>>) request.getServletContext().getAttribute("createdOrders");
 
+        // if there is no any orders
+        if(map == null){
+            out.println("<html>");
+                out.println("<body>");
+                    out.println("<div>");
+                        out.println("<h1>" + "There is no any order..." + "</h1>");
+                    out.println("</div>");
+                out.println("</body>");
+            out.println("</html>");
+
+            return;
+        }
+
         Map<String,Map<String, Integer>> ans = new HashMap<>();
 
         for(String sessionId : map.keySet()){

@@ -27,7 +27,7 @@ public class ChooseMealServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        if (getServletContext().getAttribute(request.getSession().getId()) != null) {
+        if(getServletContext().getAttribute(request.getSession().getId()) != null) {
             out.println("<html>");
                 out.println("<body>");
                     out.println("<div>");
