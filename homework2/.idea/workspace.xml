@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0c43b04f-6396-4a40-b4e6-42706b2e3b6a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../homework1/out/production/homework1/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../homework1/out/production/homework1/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../homework1/src/Assistant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../homework1/src/Assistant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../homework1/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../homework1/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/homework2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/homework2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/ServerThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,9 +18,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2NZYlV4A5R6ayAuaQjQLFG0JMQt" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
@@ -26,6 +34,14 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/home/luka/IdeaProjects/WP/homework2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.editor",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -38,6 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1679873222787</updated>
       <workItem from="1679873223946" duration="98000" />
+      <workItem from="1680002767459" duration="569000" />
     </task>
     <servers />
   </component>
