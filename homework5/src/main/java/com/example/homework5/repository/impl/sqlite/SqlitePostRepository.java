@@ -65,7 +65,6 @@ public class SqlitePostRepository extends SqliteAbstractRepository implements Po
                 ));
             }
 
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -23,10 +23,7 @@ public class CommentResource {
     @GET
     @Path("/byPostId/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Comment> getByPostId(@PathParam("id") int id) {
-        List<Comment> list = commentService.getAllByPostId(id);
-        return commentService.getAllByPostId(id);
-    }
+    public List<Comment> getByPostId(@PathParam("id") int id) { return commentService.getAllByPostId(id); }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

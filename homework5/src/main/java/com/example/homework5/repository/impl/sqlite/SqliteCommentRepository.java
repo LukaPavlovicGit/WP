@@ -59,7 +59,7 @@ public class SqliteCommentRepository extends SqliteAbstractRepository implements
                 comments.add(new Comment(
                         resultSet.getInt("id"),
                         resultSet.getInt("post_id"),
-                        resultSet.getString("title"),
+                        resultSet.getString("author"),
                         resultSet.getString("content")
                 ));
             }
@@ -88,13 +88,13 @@ public class SqliteCommentRepository extends SqliteAbstractRepository implements
             connection = this.newConnection();
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, postId);
-            resultSet = preparedStatement.executeQuery(query);
+            resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){
                 comments.add(new Comment(
                         resultSet.getInt("id"),
                         resultSet.getInt("post_id"),
-                        resultSet.getString("title"),
+                        resultSet.getString("author"),
                         resultSet.getString("content")
                 ));
             }
