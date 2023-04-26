@@ -28,22 +28,21 @@ function createPostMode(){
 }
 
 function addSinglePostElement(post){
-    const singlePostContainer = document.getElementById('single-post-mode-div-id')
 
     const singlePostDiv = document.getElementById('single-post-div-id')
 
     const postHeader = document.createElement("h1")
-    const postDate = document.createElement('pre')
-    const postAuthor = document.createElement('pre')
-    const postContent = document.createElement('pre')
+    const postDate = document.createElement('p')
+    const postAuthor = document.createElement('p')
+    const postContent = document.createElement('p')
     // use it to know postId and set it to be hidden
-    const postId = document.createElement('pre')
+    const postId = document.createElement('p')
     postId.setAttribute('id', 'post-id-holder')
     postId.hidden = true
-    const commentsHeader = document.createElement("h2")
+    const commentsHeader = document.createElement("h3")
 
     postHeader.innerText = post.title
-    postDate.innerText = post.dateLong
+    postDate.innerText = new Date(post.dateLong).toLocaleDateString()
     postAuthor.innerText = post.author
     postContent.innerText = post.content
     postId.innerText = post.id
@@ -54,7 +53,7 @@ function addSinglePostElement(post){
     singlePostDiv.appendChild(postAuthor)
     singlePostDiv.appendChild(postContent)
     singlePostDiv.appendChild(postId)
-    singlePostDiv.appendChild(document.createElement('br'))
+    singlePostDiv.appendChild(document.createElement("br"))
     singlePostDiv.appendChild(commentsHeader)
 
     fetch(`/api/comments/byPostId/${post.id}`, {
@@ -67,8 +66,8 @@ function addSinglePostElement(post){
 function addCommentElement(comment){
     const singlePostCommentsDiv = document.getElementById('single-post-comments-div-id')
 
-    const commentAuthor = document.createElement('pre')
-    const commentContent = document.createElement('pre')
+    const commentAuthor = document.createElement('p')
+    const commentContent = document.createElement('p')
 
     commentAuthor.innerText = comment.author
     commentContent.innerText = comment.content
@@ -78,7 +77,9 @@ function addCommentElement(comment){
     singlePostCommentsDiv.appendChild(document.createElement("br"))
 }
 
-function addPost(){
+function addPost(event){
+    event.preventDefault()
+
     const author = document.getElementById('new-post-author').value
     const title = document.getElementById('new-post-title').value
     const content = document.getElementById('new-post-content').value
@@ -100,7 +101,9 @@ function addPost(){
     })
 }
 
-function addComment(){
+function addComment(event){
+    event.preventDefault()
+
     const postId = document.getElementById('post-id-holder').innerText
     const author = document.getElementById('comment-author').value
     const content = document.getElementById('comment-content').value
@@ -136,12 +139,11 @@ function addPostElement(post){
 
     const postWrapperDiv = document.createElement('div')
     const postHeader = document.createElement('h2')
-    const postParagraph = document.createElement('pre')
+    const postParagraph = document.createElement('p')
 
     postHeader.innerText = post.title
     postParagraph.innerText = post.content
 
-    postWrapperDiv.style.marginLeft = '15px'
     postWrapperDiv.appendChild(postHeader)
     postWrapperDiv.appendChild(postParagraph)
     postWrapperDiv.appendChild(document.createElement('br'))
