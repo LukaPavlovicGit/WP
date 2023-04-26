@@ -2,6 +2,7 @@ window.addEventListener('load', init)
 
 function init(){
     allPostsMode()
+    loadPosts()
     document.getElementById('new-post-btn').addEventListener('click', createPostMode)
     document.getElementsByClassName('btn btn-primary post')[0].addEventListener('click', addPost)
     document.getElementsByClassName('btn btn-primary comment')[0].addEventListener('click', addComment)
@@ -11,20 +12,26 @@ function allPostsMode(){
     document.getElementById('all-posts-mode-div-id').hidden = false
     document.getElementById('single-post-mode-div-id').hidden = true
     document.getElementById('create-post-mode-div-id').hidden = true
-    loadPosts()
 }
 
-function singlePostMode(post){
+function singlePostMode(){
     document.getElementById('all-posts-mode-div-id').hidden = true
     document.getElementById('single-post-mode-div-id').hidden = false
     document.getElementById('create-post-mode-div-id').hidden = true
-    addSinglePostElement(post)
 }
 
 function createPostMode(){
     document.getElementById('all-posts-mode-div-id').hidden = true
     document.getElementById('single-post-mode-div-id').hidden = true
     document.getElementById('create-post-mode-div-id').hidden = false
+}
+
+function loadPosts(){
+    fetch('/api/posts', {
+        method: 'GET'
+    })
+        .then(posts => posts.json())
+        .then(posts => posts.forEach(post => addPostElement(post)))
 }
 
 function addSinglePostElement(post){
@@ -95,10 +102,13 @@ function addPost(event){
             content: content,
             dateLong: Date.now()
         })
-    }).then( post => {
-        allPostsMode()
-        resetNewPostForm()
     })
+        .then(response => response.json())
+        .then( post => {
+            addPostElement(post)
+            allPostsMode()
+            resetNewPostForm()
+        })
 }
 
 function addComment(event){
@@ -126,14 +136,6 @@ function addComment(event){
         })
 }
 
-function loadPosts(){
-    fetch('/api/posts', {
-        method: 'GET'
-    })
-        .then(posts => posts.json())
-        .then(posts => posts.forEach(post => addPostElement(post)))
-}
-
 function addPostElement(post){
     const allPostsDiv = document.getElementById('posts-div-id')
 
@@ -148,7 +150,8 @@ function addPostElement(post){
     postWrapperDiv.appendChild(postParagraph)
     postWrapperDiv.appendChild(document.createElement('br'))
     postWrapperDiv.addEventListener('click', function() {
-        singlePostMode(post)
+        singlePostMode()
+        addSinglePostElement(post)
     })
 
     allPostsDiv.appendChild(postWrapperDiv)

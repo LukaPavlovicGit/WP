@@ -20,6 +20,13 @@ public class Post {
 
     private Long dateLong;
 
+    public Post(int id, String author, String title, String content, Long dateLong) {
+        this.id = id;
+        this.author = author;
+        this.title = title;
+        this.content = content;
+        this.dateLong = dateLong;
+    }
 
     public Post(int id, String author, String title, String content) {
         this.id = id;

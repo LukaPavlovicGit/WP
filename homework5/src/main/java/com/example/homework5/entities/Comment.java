@@ -18,6 +18,7 @@ public class Comment {
     @NotEmpty(message = "Content field is required")
     private String content;
 
+
     public Comment(int id, int postId, String author, String content) {
         this.id = id;
         this.postId = postId;
